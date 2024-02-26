@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <iframe src="https://giphy.com/embed/lqut5VxPEhP9zCJdUT" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen style="position: fixed; right: 0; bottom: 0;"></iframe>
+    <iframe src="https://giphy.com/embed/lqut5VxPEhP9zCJdUT" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen style="position: fixed; left: 0; bottom: 0;"></iframe>
+    <iframe src="https://giphy.com/embed/lqut5VxPEhP9zCJdUT" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen style="position: fixed; right: 0; top: 0;"></iframe>
+    <iframe src="https://giphy.com/embed/lqut5VxPEhP9zCJdUT" width="300" height="200" frameBorder="0" class="giphy-embed" allowFullScreen style="position: fixed; left: 0; top: 0;"></iframe>
+    
+  </head>
+  <body>
+
+    <h1>Convert text to speech</h1>
+    <h2>Made by Alucard</h2>
+    <h3>Follow me on <a href="https://github.com/LastHasagi">Github</a></h3>
+
+    <form action="/convert" method="post">
+      <label for="text">Enter text:</label><br>
+      <textarea name="text" id="text" rows="4" cols="50"></textarea><br>
+      <input type="submit" value="Convert">
+    </form>
+    
+    {% if audio %}
+    <h2>Speech</h2>
+    <audio controls>
+      <source src="{{ url_for('uploaded_file', filename=audio) }}" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    {% endif %}
+
+    <script src="static/modernizr-1.5.min.js"></script>
+  </body>
+</html>
